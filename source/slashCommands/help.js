@@ -57,7 +57,7 @@ module.exports = {
         time: 1000 * 60 * 3,
       });
       collector.on("collect", async (i) => {
-        i.deferReply();
+        i.deferUpdate();
         if (i.customId == "pro") {
           const embed2 = new MessageEmbed()
             .setTitle(`Help Commands`)
@@ -72,8 +72,8 @@ module.exports = {
             .addField(`${prefix}add-swear `, `Add Swear`, true)
             .addField(`${prefix}anti-spam `, `Spam Protect on/off`, true)
             .addField(`${prefix}anti-bots `, `Bot Protect on/off`, true)
-            .addField(`${prefix}anti-tokens `, `Token Protect on/off`, true)
-            .addField(`${prefix}time-tokens `, `Set Tokens Age`, true)
+            .addField(`${prefix}anti-token `, `Token Protect on/off`, true)
+            .addField(`${prefix}time-token `, `Set Tokens Age`, true)
             .addField(
               `${prefix}set-limit RoleCreate <number>`,
               `Set Limite Role Create`,

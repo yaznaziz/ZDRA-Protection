@@ -30,3 +30,6 @@ client.login(process.env.TOKEN).then(async function(token) {
 }).catch(async function(error) {
     console.log(red.bold(error));
 });
+
+client.on("error", (error) => console.log(error));
+client.on("debug", (message) => console.log(message));

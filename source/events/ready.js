@@ -1,5 +1,11 @@
-const { red, blue, green } = require('chalk');
+const { red, blue, green } = require("chalk");
 
-module.exports = async(client) => {
-    require('../functions/readyFunction').get(client, red, blue);
+module.exports = async (client) => {
+  try {
+    require("../functions/readyFunction")
+      .get(client, red, blue)
+      .catch(() => {});
+  } catch {
+    console.log("");
+  }
 };

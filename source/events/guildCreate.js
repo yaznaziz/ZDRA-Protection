@@ -1,5 +1,9 @@
 const db = require('quick.db');
 
 module.exports = async(client, guild) => {
-    require('../functions/guildCreateFunction').get(guild, db);
+    try {
+    require('../functions/guildCreateFunction').get(guild, db).catch(() => {});
+} catch {
+    console.log(" ");
+  }
 };

@@ -10,7 +10,7 @@ module.exports.run = async (client) => {
 
   const arrayOfSlashCommands = [];
   slashCommands.map((value) => {
-    if (value.startsWith("devs")) ip = false;
+    // if (value.startsWith("devs")) ip = false;
     const file = require(value);
     if (!file?.name) return;
     client.slashCommands.set(file.name, file);

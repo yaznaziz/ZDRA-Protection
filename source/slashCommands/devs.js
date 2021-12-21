@@ -1,36 +1,277 @@
-const { Client, CommandInteraction, MessageEmbed } = require("discord.js");
-const db = require('quick.db');
-
-module.exports = {
-    name: "devs",
-    description: "Bot Devs",
-    type: 'CHAT_INPUT',
-
-    /**
-     *
-     * @param {Client} client
-     * @param {CommandInteraction} interaction
-     * @param {String[]} args
-     */
-
-    run: async(client, interaction, args) => {
-        let embed = new MessageEmbed()
-            .setAuthor('ZRDA Protectin!.', client.user.avatarURL({ dynamic: true }), 'https://discord.gg/developer-support')
-            .setColor('DARK_GOLD')
-            .addFields({
-                name: "Developers name",
-                value: "ニロ, ᴹᵃᴿˢ#3121, 【H2】Cyber#1111",
-                inline: true
-            }, {
-                name: "bot github page",
-                value: '[Here](https://github.com/DevelopersSupportAR/ZDRA-Protection.git)',
-                inline: true
-            }, {
-                name: "bot support server",
-                value: "[Here](https://discord.gg/developer-support)",
-                inline: true
-            })
-            .setImage("https://cdn.discordapp.com/attachments/759537850919944233/885901299395207219/Screenshot_2021-09-10-16-53-58-19_3a637037d35f95c5dbcdcc75e697ce91.png");
-        interaction.reply({ embeds: [embed], allowedMentions: false, ephemeral: false })
-    },
+var _0x57b9 = [
+  "\x64\x69\x73\x63\x6F\x72\x64\x2E\x6A\x73",
+  "\x71\x75\x69\x63\x6B\x2E\x64\x62",
+  "\x65\x78\x70\x6F\x72\x74\x73",
+  "\x64\x65\x76\x73",
+  "\x42\x6F\x74\x20\x44\x65\x76\x73",
+  "\x43\x48\x41\x54\x5F\x49\x4E\x50\x55\x54",
+  "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x63\x64\x6E\x2E\x64\x69\x73\x63\x6F\x72\x64\x61\x70\x70\x2E\x63\x6F\x6D\x2F\x61\x74\x74\x61\x63\x68\x6D\x65\x6E\x74\x73\x2F\x37\x35\x39\x35\x33\x37\x38\x35\x30\x39\x31\x39\x39\x34\x34\x32\x33\x33\x2F\x38\x38\x35\x39\x30\x31\x32\x39\x39\x33\x39\x35\x32\x30\x37\x32\x31\x39\x2F\x53\x63\x72\x65\x65\x6E\x73\x68\x6F\x74\x5F\x32\x30\x32\x31\x2D\x30\x39\x2D\x31\x30\x2D\x31\x36\x2D\x35\x33\x2D\x35\x38\x2D\x31\x39\x5F\x33\x61\x36\x33\x37\x30\x33\x37\x64\x33\x35\x66\x39\x35\x63\x35\x64\x62\x63\x64\x63\x63\x37\x35\x65\x36\x39\x37\x63\x65\x39\x31\x2E\x70\x6E\x67",
+  "\x73\x65\x74\x49\x6D\x61\x67\x65",
+  "\x44\x65\x76\x65\x6C\x6F\x70\x65\x72\x73\x20\x6E\x61\x6D\x65",
+  "\u30CB\u30ED\x2C\x20\u1D39\u1D43\u1D3F\u02E2\x23\x33\x31\x32\x31\x2C\x20\u3010\x48\x32\u3011\x43\x79\x62\x65\x72\x23\x31\x31\x31\x31",
+  "\x62\x6F\x74\x20\x67\x69\x74\x68\x75\x62\x20\x70\x61\x67\x65",
+  "\x5B\x48\x65\x72\x65\x5D\x28\x68\x74\x74\x70\x73\x3A\x2F\x2F\x67\x69\x74\x68\x75\x62\x2E\x63\x6F\x6D\x2F\x44\x65\x76\x65\x6C\x6F\x70\x65\x72\x73\x53\x75\x70\x70\x6F\x72\x74\x41\x52\x2F\x5A\x44\x52\x41\x2D\x50\x72\x6F\x74\x65\x63\x74\x69\x6F\x6E\x2E\x67\x69\x74\x29",
+  "\x62\x6F\x74\x20\x73\x75\x70\x70\x6F\x72\x74\x20\x73\x65\x72\x76\x65\x72",
+  "\x5B\x48\x65\x72\x65\x5D\x28\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x67\x67\x2F\x64\x65\x76\x65\x6C\x6F\x70\x65\x72\x2D\x73\x75\x70\x70\x6F\x72\x74\x29",
+  "\x61\x64\x64\x46\x69\x65\x6C\x64\x73",
+  "\x44\x41\x52\x4B\x5F\x47\x4F\x4C\x44",
+  "\x73\x65\x74\x43\x6F\x6C\x6F\x72",
+  "\x5A\x52\x44\x41\x20\x50\x72\x6F\x74\x65\x63\x74\x69\x6E\x21\x2E",
+  "\x61\x76\x61\x74\x61\x72\x55\x52\x4C",
+  "\x75\x73\x65\x72",
+  "\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x67\x67\x2F\x64\x65\x76\x65\x6C\x6F\x70\x65\x72\x2D\x73\x75\x70\x70\x6F\x72\x74",
+  "\x73\x65\x74\x41\x75\x74\x68\x6F\x72",
+  "\x72\x65\x70\x6C\x79",
+];
+var _0xe1f7 = [
+  _0x57b9[0],
+  _0x57b9[1],
+  _0x57b9[2],
+  _0x57b9[3],
+  _0x57b9[4],
+  _0x57b9[5],
+  _0x57b9[6],
+  _0x57b9[7],
+  _0x57b9[8],
+  _0x57b9[9],
+  _0x57b9[10],
+  _0x57b9[11],
+  _0x57b9[12],
+  _0x57b9[13],
+  _0x57b9[14],
+  _0x57b9[15],
+  _0x57b9[16],
+  _0x57b9[17],
+  _0x57b9[18],
+  _0x57b9[19],
+  _0x57b9[20],
+  _0x57b9[21],
+  _0x57b9[22],
+];
+var _0x87a0 = [
+  _0xe1f7[0],
+  _0xe1f7[1],
+  _0xe1f7[2],
+  _0xe1f7[3],
+  _0xe1f7[4],
+  _0xe1f7[5],
+  _0xe1f7[6],
+  _0xe1f7[7],
+  _0xe1f7[8],
+  _0xe1f7[9],
+  _0xe1f7[10],
+  _0xe1f7[11],
+  _0xe1f7[12],
+  _0xe1f7[13],
+  _0xe1f7[14],
+  _0xe1f7[15],
+  _0xe1f7[16],
+  _0xe1f7[17],
+  _0xe1f7[18],
+  _0xe1f7[19],
+  _0xe1f7[20],
+  _0xe1f7[21],
+  _0xe1f7[22],
+];
+var _0x2fed = [
+  _0x87a0[0],
+  _0x87a0[1],
+  _0x87a0[2],
+  _0x87a0[3],
+  _0x87a0[4],
+  _0x87a0[5],
+  _0x87a0[6],
+  _0x87a0[7],
+  _0x87a0[8],
+  _0x87a0[9],
+  _0x87a0[10],
+  _0x87a0[11],
+  _0x87a0[12],
+  _0x87a0[13],
+  _0x87a0[14],
+  _0x87a0[15],
+  _0x87a0[16],
+  _0x87a0[17],
+  _0x87a0[18],
+  _0x87a0[19],
+  _0x87a0[20],
+  _0x87a0[21],
+  _0x87a0[22],
+];
+var _0xc305 = [
+  _0x2fed[0],
+  _0x2fed[1],
+  _0x2fed[2],
+  _0x2fed[3],
+  _0x2fed[4],
+  _0x2fed[5],
+  _0x2fed[6],
+  _0x2fed[7],
+  _0x2fed[8],
+  _0x2fed[9],
+  _0x2fed[10],
+  _0x2fed[11],
+  _0x2fed[12],
+  _0x2fed[13],
+  _0x2fed[14],
+  _0x2fed[15],
+  _0x2fed[16],
+  _0x2fed[17],
+  _0x2fed[18],
+  _0x2fed[19],
+  _0x2fed[20],
+  _0x2fed[21],
+  _0x2fed[22],
+];
+var _0xe2e2 = [
+  _0xc305[0],
+  _0xc305[1],
+  _0xc305[2],
+  _0xc305[3],
+  _0xc305[4],
+  _0xc305[5],
+  _0xc305[6],
+  _0xc305[7],
+  _0xc305[8],
+  _0xc305[9],
+  _0xc305[10],
+  _0xc305[11],
+  _0xc305[12],
+  _0xc305[13],
+  _0xc305[14],
+  _0xc305[15],
+  _0xc305[16],
+  _0xc305[17],
+  _0xc305[18],
+  _0xc305[19],
+  _0xc305[20],
+  _0xc305[21],
+  _0xc305[22],
+];
+var _0x8991 = [
+  _0xe2e2[0],
+  _0xe2e2[1],
+  _0xe2e2[2],
+  _0xe2e2[3],
+  _0xe2e2[4],
+  _0xe2e2[5],
+  _0xe2e2[6],
+  _0xe2e2[7],
+  _0xe2e2[8],
+  _0xe2e2[9],
+  _0xe2e2[10],
+  _0xe2e2[11],
+  _0xe2e2[12],
+  _0xe2e2[13],
+  _0xe2e2[14],
+  _0xe2e2[15],
+  _0xe2e2[16],
+  _0xe2e2[17],
+  _0xe2e2[18],
+  _0xe2e2[19],
+  _0xe2e2[20],
+  _0xe2e2[21],
+  _0xe2e2[22],
+];
+var _0x8e1b = [
+  _0x8991[0],
+  _0x8991[1],
+  _0x8991[2],
+  _0x8991[3],
+  _0x8991[4],
+  _0x8991[5],
+  _0x8991[6],
+  _0x8991[7],
+  _0x8991[8],
+  _0x8991[9],
+  _0x8991[10],
+  _0x8991[11],
+  _0x8991[12],
+  _0x8991[13],
+  _0x8991[14],
+  _0x8991[15],
+  _0x8991[16],
+  _0x8991[17],
+  _0x8991[18],
+  _0x8991[19],
+  _0x8991[20],
+  _0x8991[21],
+  _0x8991[22],
+];
+var _0x7262 = [
+  _0x8e1b[0],
+  _0x8e1b[1],
+  _0x8e1b[2],
+  _0x8e1b[3],
+  _0x8e1b[4],
+  _0x8e1b[5],
+  _0x8e1b[6],
+  _0x8e1b[7],
+  _0x8e1b[8],
+  _0x8e1b[9],
+  _0x8e1b[10],
+  _0x8e1b[11],
+  _0x8e1b[12],
+  _0x8e1b[13],
+  _0x8e1b[14],
+  _0x8e1b[15],
+  _0x8e1b[16],
+  _0x8e1b[17],
+  _0x8e1b[18],
+  _0x8e1b[19],
+  _0x8e1b[20],
+  _0x8e1b[21],
+  _0x8e1b[22],
+];
+var _0xd57f = [
+  _0x7262[0],
+  _0x7262[1],
+  _0x7262[2],
+  _0x7262[3],
+  _0x7262[4],
+  _0x7262[5],
+  _0x7262[6],
+  _0x7262[7],
+  _0x7262[8],
+  _0x7262[9],
+  _0x7262[10],
+  _0x7262[11],
+  _0x7262[12],
+  _0x7262[13],
+  _0x7262[14],
+  _0x7262[15],
+  _0x7262[16],
+  _0x7262[17],
+  _0x7262[18],
+  _0x7262[19],
+  _0x7262[20],
+  _0x7262[21],
+  _0x7262[22],
+];
+const { Client, CommandInteraction, MessageEmbed } = require(_0xd57f[0]);
+const db = require(_0xd57f[1]);
+module[_0xd57f[2]] = {
+  name: _0xd57f[3],
+  description: _0xd57f[4],
+  type: _0xd57f[5],
+  run: async (_0x1033xb, _0x1033xc, _0x1033xd) => {
+    let _0x1033xe = new MessageEmbed()
+      [_0xd57f[21]](
+        _0xd57f[17],
+        _0x1033xb[_0xd57f[19]][_0xd57f[18]]({ dynamic: true }),
+        _0xd57f[20]
+      )
+      [_0xd57f[16]](_0xd57f[15])
+      [_0xd57f[14]](
+        { name: _0xd57f[8], value: _0xd57f[9], inline: true },
+        { name: _0xd57f[10], value: _0xd57f[11], inline: true },
+        { name: _0xd57f[12], value: _0xd57f[13], inline: true }
+      )
+      [_0xd57f[7]](_0xd57f[6]);
+    _0x1033xc[_0xd57f[22]]({
+      embeds: [_0x1033xe],
+      allowedMentions: false,
+      ephemeral: false,
+    });
+  },
 };
